@@ -135,6 +135,11 @@ class ZFImage_Image
      */
     private $original_height    = 0;
 
+    /**
+     * Tipo de Imagen
+     * @var int 
+     */
+    private $type = null;
     //--------------------------------------------------------------------------
     /**
      * @param string|int $src Ubicación de la imágen a abrir o ancho de la imágen
@@ -253,6 +258,7 @@ class ZFImage_Image
     {
         if ( file_exists( $filename ) ) {
             if ( ($image_data = getimagesize($filename)) ) {
+                $this->type = $image_data[2];
                 switch ( $image_data[2] ) { // El elemento 2 hace referencia el tipo de imagen
                     case IMAGETYPE_GIF:
                         if ( $this->gd_support_gif ) {
@@ -292,6 +298,11 @@ class ZFImage_Image
         }
     }
 
+    public function getImageType()
+    {
+        return $this->type;
+    }
+    
     //--------------------------------------------------------------------------
 
     /**
