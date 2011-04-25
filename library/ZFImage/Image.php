@@ -709,7 +709,9 @@ class ZFImage_Image
         $this->gd_version = $match[0];
         $this->gd_support_gif = $this->gd_info['GIF Create Support'];
         $this->gd_support_png = $this->gd_info['PNG Support'];
-        $this->gd_support_jpg = ($this->gd_info['JPEG Support'])? $this->gd_info['JPEG Support']: $this->gd_info['JPG Support'];
+        // Dependiendo de la versión de GD que se use gd_info puede variar el nombre de la variable
+        // que se esta buscando por lo que esta función quedará definida de la siguiente forma
+        $this->gd_support_jpg = isset($this->gd_info['JPEG Support'])? $this->gd_info['JPEG Support']: $this->gd_info['JPG Support'];
         $this->gd_support_ttf = $this->gd_info['FreeType Support'];
     }
 
