@@ -171,7 +171,7 @@ class ZFImage_Image
      */
     public function addPlugin( $plugin )
     {
-    	return $this->attach($child);
+    	return $this->attach($plugin);
     }
     
     /**
