@@ -1,10 +1,7 @@
 <?php
 
-include_once "Zend/Loader/Autoloader.php";
+include "config.php";
 
-$autoloader = Zend_Loader_Autoloader::getInstance();
-$autoloader->registerNamespace("ZFImage_");
-
-
-
-?>
+$image = new ZFImage_Image("images/desert.jpg");
+$image->addPlugin(new ZFImage_Fx_Resize(200));
+$image->imageJpeg();

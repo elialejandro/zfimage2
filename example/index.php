@@ -3,6 +3,6 @@
         <title>Example Page</title>  
     </head>
     <body>
-        <img src="examples/rezise.php" />
+        <img src="examples/resize.php" />
     </body>
 </html>
