@@ -163,9 +163,19 @@ class ZFImage_Image
     }
 
     //--------------------------------------------------------------------------
-
+	
     /**
-     * Encadenar
+     * Add a plugin FX or Draw
+     * @param ZFImage_Plugin_Base $plugin
+     * @return string|boolean
+     */
+    public function addPlugin( $plugin )
+    {
+    	return $this->attach($child);
+    }
+    
+    /**
+     * Attach a FX
      * @param ZFImage_Plugin_Base $child
      * @return string|boolean
      */
