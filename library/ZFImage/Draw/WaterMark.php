@@ -94,7 +94,7 @@ class ZFImage_Draw_WaterMark extends ZFImage_Plugin_Base implements ZFImage_Plug
     /**
      *
      * @param ZFImage_Image $image
-     * @param int $position
+     * @param string $position OPTIONAL default "br"
      */
     public function  __construct( ZFImage_Image $image, $position = "br" )
     {
