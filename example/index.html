@@ -45,13 +45,12 @@ body {
 						<img src="examples/resize.php" />
 						<div class="caption">
 							<h5>Resize</h5>
-							<p>Example:
+                                                        <p>Example:</p>
 <pre class="prettyprint linenums">
 $image = new ZFImage_Image("images/desert.jpg");
 $image->addPlugin(new ZFImage_Fx_Resize(220));
 $image->imageJpeg();
 </pre>
-							</p>
 						</div>
 					</div>
 				</li>
@@ -60,13 +59,12 @@ $image->imageJpeg();
 						<img src="examples/crop.php" />
 						<div class="caption">
 							<h5>Crop</h5>
-							<p>Example:
+                                                        <p>Example:</p>
 <pre class="prettyprint linenums">
 $image = new ZFImage_Image('images/desert.jpg');
 $image->addPlugin(new ZFImage_Fx_Crop(100));
 $image->imageJpeg();
 </pre>
-							</p>
 						</div>
 					</div>
 				</li>
@@ -75,7 +73,7 @@ $image->imageJpeg();
 						<img src="examples/watermark.php" />
 						<div class="caption">
 							<h5>WaterMark</h5>
-							<p>Example:
+                                                        <p>Example:</p>
 <pre class="prettyprint linenums">
 $image = new ZFImage_Image("images/desert.jpg");
 $watermark = new ZFImage_Image("images/watermark.png");
@@ -83,7 +81,21 @@ $image->addPlugin(new ZFImage_Fx_Resize(400));
 $image->addPlugin(new ZFImage_Draw_WaterMark($watermark));
 $image->imageJpeg();
 </pre>
-							</p>
+							
+						</div>
+					</div>
+				</li>
+                                <li class="span6">
+					<div class="thumbnail">
+						<img src="examples/crop_top.php" />
+						<div class="caption">
+							<h5>Crop Top</h5>
+                                                        <p>Example:</p>
+<pre class="prettyprint linenums">
+$image = new ZFImage_Image('images/desert.jpg');
+$image->addPlugin(new ZFImage_Fx_Crop(400, 300, "top"));
+$image->imageJpeg();
+</pre>
 						</div>
 					</div>
 				</li>

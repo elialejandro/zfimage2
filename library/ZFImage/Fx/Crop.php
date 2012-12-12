@@ -56,7 +56,7 @@ class ZFImage_Fx_Crop extends ZFImage_Plugin_Base implements ZFImage_Plugin_Inte
 {
     public $_type_id        = "Effect";
     public $_sub_type_id    = "Crop";
-    public $_version        = 0.1;
+    public $_version        = 0.2;
 
     /**
      * Tamaño en X
@@ -68,6 +68,12 @@ class ZFImage_Fx_Crop extends ZFImage_Plugin_Base implements ZFImage_Plugin_Inte
      * @var int
      */
     private $_crop_y    = 0;
+    
+    /**
+     * Alineación
+     * @var type 
+     */
+    private $_align     = "";
 
     /**
      * Ancho del lienzo
@@ -81,14 +87,21 @@ class ZFImage_Fx_Crop extends ZFImage_Plugin_Base implements ZFImage_Plugin_Inte
     private $_canvas_y  = 0;
 
     /**
-     * Cortar
+     * Cortar imagen
+     * Tipos de Alineación
+     * $align = "top"
+     * o $align = "center, por defecto center.
+     * 
      * @param int $crop_x Requerido
      * @param int $crop_y Requerido
+     * @param string $align
+     * $name Description
      */
-    public function __construct( $crop_x, $crop_y )
+    public function __construct( $crop_x, $crop_y, $align = "center" )
     {
         $this->_crop_x = $crop_x;
         $this->_crop_y = $crop_y;
+        $this->_align  = $align;
     }
     /**
      * Nuevo tamaño
@@ -100,6 +113,16 @@ class ZFImage_Fx_Crop extends ZFImage_Plugin_Base implements ZFImage_Plugin_Inte
         $this->_crop_x = $crop_x;
         $this->_crop_y = $crop_y;
     }
+    /**
+     * Alineación 
+     * "top" o "center"
+     * @param string $align
+     */
+    public function setAlign( $align = "center" ) 
+    {
+        $this->_align = $align;
+    }
+    
     /**
      * Calcula el area de cortado
      * @return boolean
@@ -135,9 +158,17 @@ class ZFImage_Fx_Crop extends ZFImage_Plugin_Base implements ZFImage_Plugin_Inte
         $crop = new ZFImage_Image();
         $crop->createImageTrueColorTransparent($this->_canvas_x, $this->_canvas_y);
 
-        $src_x = $this->_owner->handle_x - floor($this->_canvas_x/2);
-        $src_y = $this->_owner->handle_y - floor($this->_canvas_y/2);
-
+        if ( $this->_align == "center" ) {
+            $src_x = $this->_owner->handle_x - floor($this->_canvas_x/2);
+            $src_y = $this->_owner->handle_y - floor($this->_canvas_y/2);
+        } else if ( $this->_align == "top") {
+            $src_x = 0;
+            $src_y = 0;
+        } else {
+            throw new ZFImage_Exception("No se puede recortar la imagen porque la "
+                                        . "alineación que a escogido es incorrecta.");
+        }
+        
         imagecopy(
                 $crop->image,
                 $this->_owner->image,
