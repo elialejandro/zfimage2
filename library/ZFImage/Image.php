@@ -140,6 +140,18 @@ class ZFImage_Image
      * @var int 
      */
     private $type = null;
+    
+    /**
+     * Limite de memoria actual
+     * @var string
+     */
+    private $_current_memory_limit;
+    
+    /**
+     * Limite de memoría máximo para usar ZFImage
+     */
+    const ZFIMAGE_MAX_MEMORY_LIMIT = '256M';
+
     //--------------------------------------------------------------------------
     /**
      * @param string|int $src Ubicación de la imágen a abrir o ancho de la imágen
@@ -148,6 +160,14 @@ class ZFImage_Image
      */
     public function  __construct()
     {
+        // Aquí se optiene el limite de memoría actual
+        $this->_current_memory_limit = ini_get("memory_limit");
+        
+        if ( $this->_current_memory_limit != ZFImage_Image::ZFIMAGE_MAX_MEMORY_LIMIT ) {
+            // Cambiando el límite Maximo porque la libería GD descomprime la imagen en memoria
+            @ini_set("memory_limit", ZFImage_Image::ZFIMAGE_MAX_MEMORY_LIMIT);
+        }
+        
         $this->_detectGD();
 
         $this->mid_handle = true;
@@ -265,7 +285,7 @@ class ZFImage_Image
      * @return boolean
      */
     public function openImage( $filename = "" )
-    {
+    {        
         if ( file_exists( $filename ) ) {
             if ( ($image_data = getimagesize($filename)) ) {
                 $this->type = $image_data[2];
