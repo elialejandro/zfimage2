@@ -47,8 +47,8 @@ body {
 							<h5>Resize</h5>
                                                         <p>Example:</p>
 <pre class="prettyprint linenums">
-$image = new ZFImage_Image("images/desert.jpg");
-$image->addPlugin(new ZFImage_Fx_Resize(220));
+$image = new ZFImage\Image("images/desert.jpg");
+$image->addPlugin(new ZFImage\Fx\Resize(220));
 $image->imageJpeg();
 </pre>
 						</div>
@@ -61,8 +61,8 @@ $image->imageJpeg();
 							<h5>Crop</h5>
                                                         <p>Example:</p>
 <pre class="prettyprint linenums">
-$image = new ZFImage_Image('images/desert.jpg');
-$image->addPlugin(new ZFImage_Fx_Crop(100));
+$image = new ZFImage\Image('images/desert.jpg');
+$image->addPlugin(new ZFImage\Fx\Crop(100));
 $image->imageJpeg();
 </pre>
 						</div>
@@ -75,10 +75,10 @@ $image->imageJpeg();
 							<h5>WaterMark</h5>
                                                         <p>Example:</p>
 <pre class="prettyprint linenums">
-$image = new ZFImage_Image("images/desert.jpg");
-$watermark = new ZFImage_Image("images/watermark.png");
-$image->addPlugin(new ZFImage_Fx_Resize(400));
-$image->addPlugin(new ZFImage_Draw_WaterMark($watermark));
+$image = new ZFImage\Image("images/desert.jpg");
+$watermark = new ZFImage\Image("images/watermark.png");
+$image->addPlugin(new ZFImage\Fx\Resize(400));
+$image->addPlugin(new ZFImage\Draw\WaterMark($watermark));
 $image->imageJpeg();
 </pre>
 							
@@ -92,8 +92,8 @@ $image->imageJpeg();
 							<h5>Crop Top</h5>
                                                         <p>Example:</p>
 <pre class="prettyprint linenums">
-$image = new ZFImage_Image('images/desert.jpg');
-$image->addPlugin(new ZFImage_Fx_Crop(400, 300, "top"));
+$image = new ZFImage\Image('images/desert.jpg');
+$image->addPlugin(new ZFImage\Fx\Crop(400, 300, "top"));
 $image->imageJpeg();
 </pre>
 						</div>

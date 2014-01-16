@@ -1,58 +1,20 @@
 <?php
 /**
- * Copyright (c) 2010-2011, Eli Alejandro <iscelialejandro@gmail.com>
- * All rights reserved.
+ * ZFImage
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   * Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   * Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in
- *     the documentation and/or other materials provided with the
- *     distribution.
- *
- *   * Neither the name of Eli Alejandro nor the names of his
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
- * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
- * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
- * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
- * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- *
- * @category    Zend
- * @package     ZFImage
- * @subpackage  Draw
- * @author      Eli Alejandro Moreno López <iscelialejandro@gmail.com>
- * @copyright   Copyright (c) 2010-2011 Eli Alejandro <iscelialejandro@gmail.com>
- * @license     http://www.opensource.org/licenses/bsd-license.php  BSD License
- *              http://creativecommons.org/licenses/BSD/deed.es_MX  BSD License (español)
- * @version     $Id: WaterMark.php 9 2011-04-15 22:25:23Z rurouni $
- *
+ * @link      http://github.com/elialejandro/zfimage2 for the canonical source repository
+ * @copyright Copyright (c) 2010-2014 Eli Alejandro
+ * @license   https://github.com/elialejandro/zfimage2/blob/master/license.md New BSD License
  */
 
-/**
- * @see ZFImage_Plugin_Interface
- */
-require_once 'ZFImage/Plugin/Interface.php';
-/**
- * @see ZFImage_Plugin_Base
- */
-require_once 'ZFImage/Plugin/Base.php';
+namespace ZFImage\Draw;
 
-class ZFImage_Draw_WaterMark extends ZFImage_Plugin_Base implements ZFImage_Plugin_Interface
+use ZFImage\Image;
+use ZFImage\Plugin\Base;
+use ZFImage\Plugin\PluginInterface;
+use ZFImage\Fx\Resize;
+
+class WaterMark extends Base implements PluginInterface
 {
     // PROPIEDADES
     /**
@@ -93,10 +55,10 @@ class ZFImage_Draw_WaterMark extends ZFImage_Plugin_Base implements ZFImage_Plug
 
     /**
      *
-     * @param ZFImage_Image $image
+     * @param ZFImage\Image $image
      * @param string $position OPTIONAL default "br"
      */
-    public function  __construct( ZFImage_Image $image, $position = "br" )
+    public function  __construct( Image $image, $position = "br" )
     {
         $this->_watermark   = $image;
         $this->_position    = $position;
@@ -141,7 +103,7 @@ class ZFImage_Draw_WaterMark extends ZFImage_Plugin_Base implements ZFImage_Plug
         $height = $this->_owner->getHeight();
 
         //TODO: ARREGLAR
-            $this->_watermark->attach(new ZFImage_Fx_Resize( floor($width) ) );
+            $this->_watermark->attach(new Resize( floor($width) ) );
             $this->_watermark->evaluateFxStack();
 
         $watermark_width  = $this->_watermark->getWidth();

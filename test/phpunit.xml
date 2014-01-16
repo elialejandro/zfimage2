@@ -1,0 +1,15 @@
+<phpunit bootstrap="../vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopTuFailure="false"
+         syntaxCheck="false"
+>
+    <testsuites>
+        <testsuites name="ZFImage Test">
+            <directory>./ZFImage</directory>
+        </testsuites>
+    </testsuites>
+</phpunit>
