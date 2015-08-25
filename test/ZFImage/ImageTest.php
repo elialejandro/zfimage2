@@ -9,7 +9,7 @@ class ImageTest extends PHPUnit_Framework_TestCase
     public function testCreateImageInstance()
     {
         $image = new Image();
-        $this->assertInstanceOf("ZFImage\Image", $image);
+        $this->assertInstanceOf("\\ZFImage\\Image", $image);
     }
     
     public function testCreateImageBlank()

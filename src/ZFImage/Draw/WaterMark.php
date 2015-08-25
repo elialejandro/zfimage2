@@ -71,7 +71,7 @@ class WaterMark extends Base implements PluginInterface
     }
     
     /**
-     * Posición
+     * Position
      * @param String|int $x Horizontal position
      * <strong>string param</strong><br />
      * "tl" = top-left<br />
@@ -86,7 +86,7 @@ class WaterMark extends Base implements PluginInterface
      * "tile"
      * @param int $y OPTIONAL vertical position
      */
-    public function setPosition( $x, $y = null )
+    public function setPosition($x, $y = null)
     {
         if ( $y != null ){
             $this->_position = "user";
