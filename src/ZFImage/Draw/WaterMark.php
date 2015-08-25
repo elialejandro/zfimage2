@@ -16,39 +16,45 @@ use ZFImage\Fx\Resize;
 
 class WaterMark extends Base implements PluginInterface
 {
-    // PROPIEDADES
     /**
-     * Tipo de Plugin
+     * Plugin type
      * @var string
      */
     public $_type_id        = "Draw";
+    
     /**
-     * Nombre del plugin
+     * Plugin name
      * @var string
      */
     public $_sub_type_id    = "WaterMark";
+    
     /**
-     * Versión
+     * Version
      * @var int
      */
     public $_version        = 0.1;
+    
     /**
-     * Imagen a incrustar como marca de agua
+     * Image to use as watermark
+     * 
      * @var ZFImage_Image
      */
     public $_watermark      = null;
+    
     /**
-     * Posición
+     * Position
      * @var string
      */
     public $_position       = "br";
+    
     /**
-     * Posición en X
+     * Position X
      * @var int
      */
     public $_position_x     = null;
+    
     /**
-     * Posición en Y
+     * Position Y
      * @var int
      */
     public $_position_y     = null;
@@ -63,28 +69,29 @@ class WaterMark extends Base implements PluginInterface
         $this->_watermark   = $image;
         $this->_position    = $position;
     }
+    
     /**
      * Posición
-     * @param String|int $x
+     * @param String|int $x Horizontal position
      * <strong>string param</strong><br />
-     * "tl" = top-left [Arriba-Izquierda]<br />
-     * "tm" = top-middle [Arriba-Centro]<br />
-     * "tr" = top-right [Arriba-Derecha]<br />
-     * "ml" = middle-left [Medio-Izquierda]<br />
-     * "mm" = middle-middle [Medio-Medio]<br />
-     * "mr" = middle-right [Medio-Derecha]<br />
-     * "bl" = bottom-left [Bajo-Izquierda]<br />
-     * "bm" = bottom-middle [Bajo-Centro]<br />
-     * "br" = bottom-right [Bajo-Derecha]<br />
+     * "tl" = top-left<br />
+     * "tm" = top-middle<br />
+     * "tr" = top-right<br />
+     * "ml" = middle-left<br />
+     * "mm" = middle-middle<br />
+     * "mr" = middle-right<br />
+     * "bl" = bottom-left<br />
+     * "bm" = bottom-middle<br />
+     * "br" = bottom-right<br />
      * "tile"
-     * @param int $y [Opcional]
+     * @param int $y OPTIONAL vertical position
      */
     public function setPosition( $x, $y = null )
     {
         if ( $y != null ){
             $this->_position = "user";
-            $this->_position_x = $args[0];
-            $this->_position_y = $args[1];
+            $this->_position_x = $x;
+            $this->_position_y = $y;
         } else {
             $this->_position = $x;
         }
