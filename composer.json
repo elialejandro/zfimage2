@@ -1,22 +1,20 @@
 {
-    "name": "rurounize/zfimage2",
-    "description": "Description of project zfimage2.",
-    "authors": [
-        {
-            "name": "Eli Alejandro",
-            "email": "iscelialejandro@gmail.com"
-        }
-    ],
-    "license": "BSD-3-Clause",
-    "autoload": {
-        "psr-0": {
-            "ZFImage\\": "src/"
-        }
-    },
-    "require": {
-        "php": ">= 5.3.3"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "3.7.*"
+  "name" : "rurounize/zfimage2",
+  "description" : "Description of project zfimage2.",
+  "require" : {
+    "php" : ">= 5.3.3"
+  },
+  "require-dev" : {
+    "phpunit/phpunit" : "4.*"
+  },
+  "license" : "BSD-3-Clause",
+  "autoload" : {
+    "psr-0" : {
+      "ZFImage\\" : "src/"
     }
+  },
+  "authors" : [ {
+    "name" : "Eli Alejandro",
+    "email" : "iscelialejandro@gmail.com"
+  } ]
 }
