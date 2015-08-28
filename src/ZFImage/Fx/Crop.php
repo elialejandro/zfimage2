@@ -119,15 +119,17 @@ class Crop extends Base implements PluginInterface
         $crop = new Image();
         $crop->createImageTrueColorTransparent($this->_canvas_x, $this->_canvas_y);
 
-        if ( $this->_align == "center" ) {
-            $src_x = $this->_owner->handle_x - floor($this->_canvas_x/2);
-            $src_y = $this->_owner->handle_y - floor($this->_canvas_y/2);
-        } else if ( $this->_align == "top") {
-            $src_x = 0;
-            $src_y = 0;
-        } else {
-            throw new ImageException("No se puede recortar la imagen porque la "
-                                     . "alineación que a escogido es incorrecta.");
+        // CROP ALIGN
+        switch($this->_align) { 
+            case "center": 
+                $src_x = $this->_owner->handle_x - floor($this->_canvas_x/2);
+                $src_y = $this->_owner->handle_y - floor($this->_canvas_y/2);
+                break;
+            case "top":
+            default:
+                $src_x = 0;
+                $src_y = 0;
+                break;
         }
         
         imagecopy(
