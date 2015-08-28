@@ -25,8 +25,6 @@ class WaterMarkTest extends PHPUnit_Framework_TestCase
         $image = new Image();
         $image->createImage();
         $this->waterMark = new WaterMark($image);
-        
-        $this->assertInstanceOf("\\ZFImage\\Draw\\WaterMark", $this->waterMark);
     }
 
     /**
@@ -37,6 +35,11 @@ class WaterMarkTest extends PHPUnit_Framework_TestCase
         $this->waterMark = null;
         
         parent::tearDown();
+    }
+    
+    public function testTypeObject()
+    {
+        $this->assertInstanceOf("\\ZFImage\\Draw\\WaterMark", $this->waterMark);
     }
 
     /**
